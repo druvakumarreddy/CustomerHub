@@ -1,0 +1,107 @@
+﻿@model SimpleMVCdapper.Models.Customerinfo
+
+@{
+    ViewBag.Title = "AddCust";
+}
+
+<center>
+    <h3 style="color:green">
+        <span class="glyphicon glyphicon-envelope"></span>
+        Add New Customer <span class="glyphicon glyphicon-envelope"></span>
+    </h3>
+</center>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr>
+        @*<fieldset style="border: groove; border-radius: 10px">*@
+        @*@Html.ValidationSummary(true)
+            @Html.HiddenFor(model => model.ID)*@
+
+        <center>
+            <table style="border-radius:10px; border:groove">
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.Name)
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.Name)
+                        @Html.ValidationMessageFor(model => model.Name)
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.Gender)
+                    </td>
+                    <td>
+                        @Html.DropDownList("Gender", new List<SelectListItem>
+                               {
+                                new SelectListItem{Text="Male", Value="Male"},
+                                new SelectListItem{Text="Female", Value="Female"},
+                                new SelectListItem{Text="Notspecified", Value="Notspecified"}
+                               }, "Select")
+                        @Html.ValidationMessageFor(model => model.Gender)
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.City)
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.City)
+                        @Html.ValidationMessageFor(model => model.City)
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.Email)
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.Email)
+                        @Html.ValidationMessageFor(model => model.Email)
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.Mobile)
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.Mobile)
+                        @Html.ValidationMessageFor(model => model.Mobile)
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </td>
+                </tr>
+            </table>
+        </center>
+        @*</fieldset>*@
+    </div>
+}
+<br>
+<center>
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</center>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,86 @@
+﻿@model IEnumerable<SimpleMVCdapper.Models.Customerinfo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<center>
+    <h3 style="color:blue">
+        <span class="glyphicon glyphicon-list"></span>
+        Customers List <span class="glyphicon glyphicon-list"></span>
+    </h3>
+</center>
+<marquee><b style="color:orange">List of Customers</b></marquee>
+
+<p>
+    @Html.ActionLink("Add New Customer", "AddCust")
+</p>
+<table class="table" border="1" style="border:groove">
+    <tr>
+        <th>
+            <center>
+                @Html.DisplayName("ID")
+            </center>
+        </th>
+        <th>
+            <center>
+                @Html.DisplayName("Name")
+            </center>
+        </th>
+        <th>
+            <center>
+                @Html.DisplayName("Gender")
+            </center>
+        </th>
+        <th>
+            <center>
+                @Html.DisplayName("City")
+            </center>
+        </th>
+        <th>
+            <center>
+                @Html.DisplayName("Email_ID")
+            </center>
+        </th>
+        <th>
+            <center>
+                @Html.DisplayName("Mobile")
+            </center>
+        </th>
+        <th>
+            <center>
+                @Html.DisplayName("Actions")
+            </center>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td align="center">
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td align="center">
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td align="center">
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td align="center">
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td align="center">
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td align="center">
+                @Html.DisplayFor(modelItem => item.Mobile)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "UpdateCust", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
